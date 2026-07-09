@@ -19,13 +19,6 @@ pipeline {
         IMAGE_NAME = "omar1015/omar-test:jma-4.0"
     }
     stages {
-        stage("init") {
-            steps {
-                script {
-                    gv = load "Groovy.script.groovy"
-                }
-            }
-        }
         stage("build jar") {
             steps {
                 script {
