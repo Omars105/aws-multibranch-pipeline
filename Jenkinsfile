@@ -16,7 +16,7 @@ pipeline {
         maven 'maven-3.9'
     }
     environment {
-        IMAGE_NAME = "omar1015/omar-test:jma-4.0"
+        IMAGE_NAME = "omar1015/omar-test:jma-5.0"
     }
     stages {
         stage("build jar") {
@@ -41,7 +41,7 @@ pipeline {
                     echo "deploying docker image to EC2"
                     
                     sshagent(['ec2-server-key']) {
-                        def shellCmd = "bash ./server-Cmds.sh"
+                        def shellCmd = "bash ./server-Cmds.sh ${IMAGE_NAME}"
                         sh "scp server-Cmds.sh ec2-user@16.16.100.205:/home/ec2-user/"
                         sh "scp docker-compose.yaml ec2-user@16.16.100.205:/home/ec2-user/"
                         sh "ssh -o StrictHostKeyChecking=no ec2-user@16.16.100.205 ${shellCmd}"
