@@ -43,6 +43,7 @@ pipeline {
                     sshagent(['ec2-server-key']) {
                         def shellCmd = "bash ./server-Cmds.sh"
                         sh "scp server-Cmds.sh ec2-user@16.16.100.205:/home/ec2-user/"
+                        sh "scp docker-compose.yaml ec2-user@16.16.100.205:/home/ec2-user/"
                         sh "ssh -o StrictHostKeyChecking=no ec2-user@16.16.100.205 ${shellCmd}"
                     }
                 }
