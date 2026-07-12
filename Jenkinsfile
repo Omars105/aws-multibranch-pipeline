@@ -75,7 +75,7 @@ mvn build-helper:parse-version versions:set \
                         sh "git remote set-url origin https://${GIT_USER}:${GIT_TOKEN}@github.com/Omars105/aws-multibranch-pipeline.git"
                         sh 'git add .'
                         sh "git commit -m 'version incremented to ${IMAGE_NAME}'"
-                        sh 'git push origin HEAD:aws-multibranch-pipeline'
+                        sh 'git push origin HEAD:main'
                     }
                 }
             }
